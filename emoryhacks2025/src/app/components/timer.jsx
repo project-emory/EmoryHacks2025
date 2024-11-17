@@ -35,7 +35,7 @@ const CountdownTimer = () => {
       transition={{ duration: 1.5, ease: "easeOut" }}
     >
       <h1 className="text-[22px] sm:text-[36px] md:text-[5vw] font-bold bg-gradient-to-r from-white to-brand-tertiary text-transparent bg-clip-text drop-shadow-title">
-        COUNTDOWN TO MARCH 21, 2025
+        Launching In ...
       </h1>
       <div className="flex justify-center gap-4 text-[10px] sm:text-[12px] md:text-[16px] lg:text-[20px] xl:text-[24px] font-medium">
         <div className="flex flex-col items-center">
