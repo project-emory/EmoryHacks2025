@@ -4,6 +4,7 @@ import { useRef } from "react";
 import HeroText from "./heroText";
 import Parallax from "@/app/components/parallax";
 import Graphics from "./graphics";
+import CountdownTimer from "@/app/components/timer";
 
 const Landing = () => {
   const landingRef = useRef(null);
@@ -17,6 +18,11 @@ const Landing = () => {
       {/* TITLE */}
       <Parallax speed={"xl"} containerRef={landingRef}>
         <HeroText />
+      </Parallax>
+
+      {/* COUNTDOWN TIMER */}
+      <Parallax speed={"sm"} containerRef={landingRef}> {/* Optional: add parallax effect to CountdownTimer */}
+        <CountdownTimer />
       </Parallax>
     </div>
   );

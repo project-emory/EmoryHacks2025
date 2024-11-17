@@ -12,6 +12,7 @@
     "@nextui-org/navbar": "^2.0.37",
     "@nextui-org/react": "^2.4.8",
     "@studio-freight/react-lenis": "^0.0.47",
+    "@tabler/icons-react": "^3.22.0",
     "framer-motion": "^11.11.10",
     "gsap": "^3.12.5",
     "lenis": "^1.1.14",
