@@ -3,9 +3,11 @@
 import Link from "next/link"; // Import the Link component
 import { animate, motion, stagger, useInView } from "framer-motion";
 import { gsap } from "gsap";
-
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import logo from "../../../public/logo.png";
+import Float from "./float";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -34,14 +36,17 @@ const Nav = () => {
       transition={{ duration: 1, delay: 1, ease: "backInOut" }}
       className="fixed w-screen flex justify-between gap-10 py-6 top-0 px-6 sm:px-10 z-50 bg-gradient-to-b from-[#211254dd] to-[#21125400]"
     >
-      <div className="hidden md:block size-16 bg-neutral-200"></div>
+      {/* LOGO */}
+      <Link href="/" className="hidden md:block size-20">
+        <Image src={logo} alt="logo" />
+      </Link>
 
       {/* INDICATOR BAR */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={indicatorStyle}
         transition={{ opacity: { delay: 1 } }}
-        className="hidden md:block bg-white h-[2px] sm:h-[3px] w-10 fixed top-[45px] md:top-[70px]"
+        className="hidden md:block bg-white h-[2px] sm:h-[3px] w-10 fixed top-[45px] md:top-[76px]"
       />
 
       <ul className="flex w-full max-w-[700px] items-center justify-between">
@@ -66,7 +71,7 @@ const NavItem = ({ name, setCurrSection }) => {
 
   const ref = useRef(null);
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { amount: 0.4 });
+  const isInView = useInView(sectionRef, { amount: "some" });
 
   useEffect(() => {
     sectionRef.current = document.getElementById(name);
