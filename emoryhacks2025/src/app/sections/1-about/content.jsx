@@ -1,9 +1,9 @@
 "use client";
 
-import ParallaxProvider from "@/app/components/parallax";
 import { useRef } from "react";
 import { Raleway } from "next/font/google";
 import { useInView, motion } from "framer-motion";
+import Parallax from "@/app/components/parallax";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -19,7 +19,7 @@ const Content = () => {
       ref={container}
       className="absolute top-[10vw] sm:top-[20vw] right-[15vw] sm:right-[6vw] w-[70vw] sm:w-[53vw] h-auto z-10"
     >
-      <ParallaxProvider containerRef={container} speed="sm">
+      <Parallax containerRef={container} speed="sm">
         {/* TITLE */}
         <motion.h1
           animate={{
@@ -27,7 +27,7 @@ const Content = () => {
             y: isInView ? 0 : 20,
           }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="mb-2 text-[22px] sm:text-[36px] md:text-[5vw] font-bold bg-gradient-to-r from-white to-brand-tertiary text-transparent bg-clip-text drop-shadow-title"
+          className="mb-2 text-title font-bold bg-gradient-to-r from-white to-brand-tertiary text-transparent bg-clip-text drop-shadow-title"
         >
           ABOUT
         </motion.h1>
@@ -41,7 +41,7 @@ const Content = () => {
           transition={{ duration: 1.5, ease: "easeOut" }}
           className={`${raleway.className} p-5 md:p-10 bg-[#ffffff88] backdrop-blur-[33px] drop-shadow-lg rounded-[16px] md:rounded-[30px]`}
         >
-          <p className="leading-snug sm:leading-relaxed tracking-normal lg:tracking-wide xl:tracking-wider text-[10px] sm:text-[12px] md:text-[16px] lg:text-[20px] xl:text-[24px] font-medium text-black">
+          <p className="text-body font-medium text-black">
             Emory Hacks, presented by PROJECT Emory, is a hackathon hosted at
             Emory University. We are committed to bringing hundreds of students
             together for an intensive 36-hour hackathon where innovation comes
@@ -52,7 +52,7 @@ const Content = () => {
             boundaries in this dynamic weekend of building and collaboration.
           </p>
         </motion.div>
-      </ParallaxProvider>
+      </Parallax>
     </motion.div>
   );
 };

@@ -18,8 +18,8 @@ const Graphics = () => {
 
   // Parallax speeds
   const distant = [comet_r, comet_l, comet_c];
-  const medium = [alien_r];
-  const close = [alien_l];
+  const medium = [alien_r, alien_l];
+  // const close = [alien_l];
 
   return (
     <div
@@ -39,21 +39,21 @@ const Graphics = () => {
       {/* GRAPHICS */}
       {distant.map((item, index) => (
         <Parallax containerRef={container} speed={"sm"} key={index}>
-          <Image key={index} src={item} alt={"img"} className="w-screen" />
+          <Image src={item} alt={"img"} className="w-screen" />
         </Parallax>
       ))}
 
       {medium.map((item, index) => (
         <Parallax containerRef={container} speed={"md"} key={index}>
-          <Image key={index} src={item} alt={"img"} className="w-screen" />
+          <Image src={item} alt={"img"} className="w-screen" />
         </Parallax>
       ))}
-
+{/* 
       {close.map((item, index) => (
         <Parallax containerRef={container} speed={"lg"} key={index}>
           <Image key={index} src={item} alt={"img"} className="w-screen" />
         </Parallax>
-      ))}
+      ))} */}
     </div>
   );
 };

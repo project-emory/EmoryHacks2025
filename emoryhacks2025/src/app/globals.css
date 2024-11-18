@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.text-title {
+  @apply text-[22px] sm:text-[36px] md:text-[6vw]
+}
+
+.text-body {
+  @apply leading-snug sm:leading-relaxed tracking-normal lg:tracking-wide xl:tracking-wider text-[10px] sm:text-[12px] md:text-[16px] lg:text-[20px] xl:text-[24px];
+}
+
+.text-small {
+  @apply text-[8px] sm:text-[10px] md:text-[12px] lg:text-[14px] xl:text-[16px];
+}
+

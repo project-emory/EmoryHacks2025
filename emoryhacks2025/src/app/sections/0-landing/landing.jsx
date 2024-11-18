@@ -11,7 +11,7 @@ const Landing = () => {
   return (
     <div
       ref={landingRef}
-      className="relative h-[110vw]"
+      className="relative h-[106vw]"
     >
       <Graphics />
       {/* TITLE */}

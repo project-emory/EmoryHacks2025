@@ -1,11 +1,11 @@
 "use client";
 
-import ParallaxProvider from "@/app/components/parallax";
 import { useRef, useState } from "react";
 import { Raleway } from "next/font/google";
 import { useInView, motion, AnimatePresence } from "framer-motion";
 import data from "./data.json";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
+import Parallax from "@/app/components/parallax";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -20,9 +20,9 @@ const Content = () => {
   return (
     <motion.div
       ref={container}
-      className="absolute top-[8vw] sm:top-[12vw] right-[15vw] sm:right-[25vw] w-[70vw] sm:w-[50vw] h-auto z-40"
+      className="absolute top-[12vw] sm:top-[16vw] right-[15vw] sm:right-[25vw] w-[70vw] sm:w-[50vw] h-fit z-30"
     >
-      <ParallaxProvider containerRef={container} speed="sm">
+      <Parallax containerRef={container} speed="md">
         {/* TITLE */}
         <motion.h1
           animate={{
@@ -30,7 +30,7 @@ const Content = () => {
             y: isInView ? 0 : 20,
           }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="mb-2 text-[22px] sm:text-[36px] md:text-[5vw] font-bold bg-gradient-to-r from-white to-brand-tertiary text-transparent bg-clip-text drop-shadow-title"
+          className="mb-2 text-title font-bold bg-gradient-to-r from-white to-brand-tertiary text-transparent bg-clip-text drop-shadow-title"
         >
           SCHEDULE
         </motion.h1>
@@ -45,12 +45,9 @@ const Content = () => {
           className={`${raleway.className} p-5 md:p-10 bg-[#ffffff88] backdrop-blur-[33px] drop-shadow-lg rounded-[16px] md:rounded-[30px] flex flex-col gap-2 md:gap-5`}
         >
           {/* DAY */}
-          <h3 className="font-bold text-[10px] sm:text-[12px] md:text-[16px] lg:text-[20px] xl:text-[24px]">
-            DAY {day}
-          </h3>
+          <h3 className="font-bold text-body">DAY {day}</h3>
 
           {/* SCHEDULE */}
-
           <AnimatePresence mode="wait">
             <motion.div
               key={day.toString()}
@@ -79,7 +76,7 @@ const Content = () => {
                 opacity: day === 1 ? 0 : 1,
                 cursor: day === 1 ? "default" : "pointer",
               }}
-              className="text-[#626262] flex gap-2 items-center font-bold text-[8px] sm:text-[10px] md:text-[14px] lg:text-[16px]"
+              className="text-[#626262] flex gap-2 items-center font-bold text-small"
             >
               <IconArrowLeft size={20} />
               DAY {day - 1}
@@ -94,14 +91,14 @@ const Content = () => {
                 opacity: day === 3 ? 0 : 1,
                 cursor: day === 3 ? "default" : "pointer",
               }}
-              className="text-[#626262] flex gap-2 items-center font-bold text-[8px] sm:text-[10px] md:text-[14px] lg:text-[16px]"
+              className="text-[#626262] flex gap-2 items-center font-bold text-small"
             >
               DAY {day + 1}
               <IconArrowRight size={20} />
             </motion.button>
           </div>
         </motion.div>
-      </ParallaxProvider>
+      </Parallax>
     </motion.div>
   );
 };
@@ -109,10 +106,10 @@ const Content = () => {
 const ScheduleUnit = ({ event }) => {
   return (
     <div className="border-l-2 md:border-l-4 border-white pl-2 md:pl-3">
-      <p className="text-[8px] sm:text-[10px] md:text-[12px] lg:text-[14px] xl:text-[16px] font-medium text-[#484848] w-[80px] text-nowrap h-fit">
+      <p className="text-small font-medium text-[#484848] w-[80px] text-nowrap h-fit">
         {event.start}
       </p>
-      <p className="flex-1 text-[8px] sm:text-[10px] md:text-[14px] lg:text-[16px] xl:text-[20px] font-medium text-black h-fit">
+      <p className="flex-1 text-body font-medium text-black h-fit">
         {event.name}
       </p>
     </div>

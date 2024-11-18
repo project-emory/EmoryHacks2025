@@ -22,8 +22,8 @@ const Graphics = () => {
   const container = useRef(null);
 
   // Parallax speeds
-  const distant = [planet_br_1, cloud_r, cloud_bl];
-  const medium = [planet_br_2, asteroid];
+  const distant = [planet_br_1];
+  const medium = [planet_br_2];
   const close = [planet_bl];
 
   return (
@@ -41,7 +41,7 @@ const Graphics = () => {
           id="landing-bg"
           src={bg}
           alt="bg"
-          className="absolute z-0 scale-105 w-screen"
+          className="absolute z-0 w-screen"
         />
       </motion.div>
 
@@ -51,24 +51,65 @@ const Graphics = () => {
           <motion.div
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.5, delay: 0.3, ease: "easeOut" }}
+            transition={{ duration: 2, delay: 0.3, ease: "easeOut" }}
           >
-            <Image key={index} src={item} alt={"img"} className="w-screen" />
+            <Image src={item} alt={"img"} className="w-screen" />
           </motion.div>
         </Parallax>
       ))}
+
+      {/* RIGHT CLOUD */}
+      <Parallax containerRef={container} speed={"sm"}>
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 2, delay: 0.3, ease: "easeOut" }}
+        >
+          <Image src={cloud_r} alt={"img"} className="w-screen" />
+        </motion.div>
+      </Parallax>
+
+      {/* BOTTOM LEFT CLOUD */}
+      <Parallax containerRef={container} speed={"sm"}>
+        <motion.div
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 2, delay: 0.3, ease: "easeOut" }}
+        >
+          <Image src={cloud_bl} alt={"img"} className="w-screen" />
+        </motion.div>
+      </Parallax>
 
       {medium.map((item, index) => (
         <Parallax containerRef={container} speed={"md"} key={index}>
           <motion.div
             initial={{ opacity: 0, y: 120 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
+            transition={{ duration: 2, delay: 0.6, ease: "easeOut" }}
           >
-            <Image key={index} src={item} alt={"img"} className="w-screen" />
+            <Image src={item} alt={"img"} className="w-screen" />
           </motion.div>
         </Parallax>
       ))}
+
+      {/* ASTEROID */}
+      <Parallax containerRef={container} speed={"md"}>
+        <motion.div
+          initial={{ x: -500, y: -500 }}
+          animate={{ x: -15, y: 0 }}
+          transition={{
+            type: "spring",
+            bounce: 1,
+            stiffness: 30,
+            duration: 2,
+            delay: 1,
+            ease: "easeOut",
+          }}
+          className="origin-center"
+        >
+          <Image src={asteroid} alt={"img"} className="w-screen" />
+        </motion.div>
+      </Parallax>
 
       {/* DOG */}
       <Parallax containerRef={container} speed={"md"}>
@@ -90,7 +131,7 @@ const Graphics = () => {
           </motion.div>
         </Float>
       </Parallax>
-      
+
       {/* ASTRONAUT */}
       <Parallax containerRef={container} speed={"md"}>
         <Float>
@@ -119,7 +160,7 @@ const Graphics = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1, ease: "easeOut" }}
           >
-            <Image key={index} src={item} alt={"img"} className="w-screen" />
+            <Image src={item} alt={"img"} className="w-screen" />
           </motion.div>
         </Parallax>
       ))}

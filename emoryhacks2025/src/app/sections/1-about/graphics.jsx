@@ -14,6 +14,7 @@ import {
   ufo,
 } from "./graphicsData";
 import Float from "@/app/components/float";
+import { motion } from "framer-motion";
 
 const Graphics = () => {
   const container = useRef(null);
@@ -29,14 +30,18 @@ const Graphics = () => {
       className="absolute top-0 left-0 w-full h-full bg-black"
     >
       {/* BG */}
-      {/* <Float duration={6}> */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <Image
           id="about-bg"
           src={bg}
           alt="bg"
-          className="absolute z-0 scale-105 w-screen"
+          className="absolute z-0 w-screen"
         />
-      {/* </Float> */}
+      </motion.div>
 
       {/* GRAPHICS */}
       {distant.map((item, index) => (
