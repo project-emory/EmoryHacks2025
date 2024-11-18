@@ -45,7 +45,7 @@ const Graphics = () => {
 
       {medium.map((item, index) => (
         <Parallax containerRef={container} speed={"md"} key={index}>
-          <Image src={item} alt={"img"} className="w-screen hidden xl:block" />
+          <Image src={item} alt={"img"} className="w-screen hidden xl:block relative" />
         </Parallax>
       ))}
     </div>
