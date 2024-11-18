@@ -1,6 +1,7 @@
 "use client";
 
-import { useScroll, useTransform, motion } from "framer-motion";
+import { useScroll, useTransform, motion, easeOut } from "framer-motion";
+import { M_PLUS_1 } from "next/font/google";
 import { useEffect, useState } from "react";
 
 const Parallax = ({ children, containerRef, speed }) => {
@@ -25,8 +26,14 @@ const Parallax = ({ children, containerRef, speed }) => {
     };
   }, []);
 
-  // Set parallax speeds
-  const speeds = {
+  const scaleAnimation = {
+    sm: useTransform(scrollYProgress, [0.5, 1], [1, 1.08], { ease: easeOut }),
+    md: useTransform(scrollYProgress, [0.5, 1], [1, 1.1], { ease: easeOut }),
+    lg: useTransform(scrollYProgress, [0.5, 1], [1, 1.11], { ease: easeOut }),
+    xl: useTransform(scrollYProgress, [0.5, 1], [1, 1.12], { ease: easeOut }),
+  };
+
+  const verticalAnimation = {
     sm: useTransform(
       scrollYProgress,
       [0, 1],
@@ -52,7 +59,8 @@ const Parallax = ({ children, containerRef, speed }) => {
   return (
     <motion.div
       style={{
-        y: speeds[speed],
+        scale: scaleAnimation[speed],
+        y: verticalAnimation[speed],
         zIndex:
           speed === "xl" ? 30 : speed === "lg" ? 20 : speed === "md" ? 10 : 0,
       }}

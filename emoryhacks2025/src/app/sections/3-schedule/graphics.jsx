@@ -10,8 +10,11 @@ import {
   comet_c,
   comet_l,
   comet_r,
+  transition_bg,
+  transition_cloud_l,
+  transition_cloud_r,
 } from "./graphicsData";
-import Float from "@/app/components/float";
+import { motion, useInView } from "framer-motion";
 
 const Graphics = () => {
   const container = useRef(null);
@@ -19,7 +22,6 @@ const Graphics = () => {
   // Parallax speeds
   const distant = [comet_r, comet_l, comet_c];
   const medium = [alien_r, alien_l];
-  // const close = [alien_l];
 
   return (
     <div
@@ -27,14 +29,12 @@ const Graphics = () => {
       className="absolute top-0 left-0 w-full h-full bg-black"
     >
       {/* BG */}
-      {/* <Float duration={6}> */}
       <Image
         id="schedule-bg"
         src={bg}
         alt="bg"
         className="absolute z-0 scale-105 w-screen"
       />
-      {/* </Float> */}
 
       {/* GRAPHICS */}
       {distant.map((item, index) => (
@@ -45,15 +45,57 @@ const Graphics = () => {
 
       {medium.map((item, index) => (
         <Parallax containerRef={container} speed={"md"} key={index}>
-          <Image src={item} alt={"img"} className="w-screen" />
+          <Image src={item} alt={"img"} className="w-screen hidden xl:block" />
         </Parallax>
       ))}
-{/* 
-      {close.map((item, index) => (
-        <Parallax containerRef={container} speed={"lg"} key={index}>
-          <Image key={index} src={item} alt={"img"} className="w-screen" />
+    </div>
+  );
+};
+
+export const TransitionGraphics = () => {
+  const container = useRef(null);
+  const isInView = useInView(container, { once: true });
+
+  // Parallax speeds
+  const distant = [transition_cloud_l, transition_cloud_r];
+
+  return (
+    <div
+      ref={container}
+      className="absolute top-0 left-0 w-full h-full bg-black"
+    >
+      {/* BG */}
+      <Image
+        id="schedule-transition-bg"
+        src={transition_bg}
+        alt="bg"
+        className="absolute z-0 scale-105 w-screen"
+      />
+
+      {/* GRAPHICS */}
+      <motion.div
+        animate={{
+          opacity: isInView ? 1 : 0,
+          x: isInView ? 0 : -100,
+        }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+      >
+        <Parallax containerRef={container} speed={"sm"}>
+          <Image src={transition_cloud_l} alt={"img"} className="w-screen" />
         </Parallax>
-      ))} */}
+      </motion.div>
+
+      <motion.div
+        animate={{
+          opacity: isInView ? 1 : 0,
+          x: isInView ? 0 : 80,
+        }}
+        transition={{ duration: 2, ease: "easeOut" }}
+      >
+        <Parallax containerRef={container} speed={"sm"}>
+          <Image src={transition_cloud_r} alt={"img"} className="w-screen" />
+        </Parallax>
+      </motion.div>
     </div>
   );
 };

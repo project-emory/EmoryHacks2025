@@ -34,20 +34,20 @@ const Nav = () => {
       initial={{ opacity: 0, y: -100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay: 1, ease: "backInOut" }}
-      className="fixed w-screen flex justify-between gap-10 py-6 top-0 px-6 sm:px-10 z-50 bg-gradient-to-b from-[#211254dd] to-[#21125400]"
+      className="fixed w-screen flex justify-between gap-10 py-6 top-0 px-6 sm:px-10 z-50 bg-gradient-to-b from-[#211459dd] to-[#21145900]"
     >
       {/* LOGO */}
-      <Link href="/" className="hidden md:block size-20">
+      <div id="logo" className="hidden md:block size-20">
         <Image src={logo} alt="logo" />
-      </Link>
+      </div>
 
       {/* INDICATOR BAR */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0 }}
         animate={indicatorStyle}
         transition={{ opacity: { delay: 1 } }}
         className="hidden md:block bg-white h-[2px] sm:h-[3px] w-10 fixed top-[45px] md:top-[76px]"
-      />
+      /> */}
 
       <ul className="flex w-full max-w-[700px] items-center justify-between">
         {sections.map((name, i) => (

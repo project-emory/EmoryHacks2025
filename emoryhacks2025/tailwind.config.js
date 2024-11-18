@@ -13,6 +13,7 @@ module.exports = {
         "brand-primary": "#314CC2",
         "brand-secondary": "#9965E6",
         "brand-tertiary": "#6EB8FF",
+        bg: "#211459",
       },
       dropShadow: {
         title: "0px 4px 10px rgba(0, 0, 0, 0.50)",
